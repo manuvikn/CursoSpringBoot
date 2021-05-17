@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    	<meta charset="UTF-8">
+        <title>Curso Spring Boot</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    </head>
+    <body>
+    	
+    	<div class="container mt-5 mb-5 text-center">
+    		<h1>Lección Parámetros</h1>
+    		
+    		<hr>
+    		
+    		<p th:if="${ name != null }">Bienvenido [[ ${ name } ]], tu nombre ha sido obtenido por el parámetro de la url o por el formulario de abajo</p>
+    		<p th:unless="${ name != null }">Introduce un parámetro en la url para saludar a alguien, ejemplo: /parametros/saludo?name=Manuel</p>
+
+    		<a th:href="@{ /parametros/saludo(name='Andrés') }" class="btn btn-success mb-3">Saludar a Andrés</a>
+    		
+    		<form th:action="@{ /parametros/saludoPer }" method="POST">
+    			<div class="row">
+    				<div class=col-10>
+    					<input type="text" name="name" class="form-control" placeholder="Saluda a ..."/>
+    				</div>
+    				<div class=col-2>
+    					<button class="btn btn-warning">Saludar</button>
+    				</div>
+    			</div>
+    		</form>
+    		
+    		<a th:href="@{ /home/ }" class="btn btn-block btn-outline-info mt-5">Home</a>
+
+    	</div>
+    	
+    </body>
+</html>

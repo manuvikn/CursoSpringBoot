@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    	<meta charset="UTF-8">
+        <title>Curso Spring Boot</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    </head>
+    <body>
+    	
+    	<div class="container mt-5 mb-5 text-center">
+    		
+    		<h1 class="mb-4">Vacantes disponibles</h1>
+    		
+    		<table class="table table-striped table-dark table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col">Imagen</th>
+			      <th scope="col">Nombre</th>
+			      <th scope="col">Descripción</th>
+			      <th scope="col">Salario</th>
+			      <th scope="col">Fecha</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr th:each="item : ${ vacantes }">
+			      <td>
+			      	<img th:src="@{ /img/ } + ${ item.img }" width="50"/>
+			      </td>
+			      <td th:text="${ item.nombre }"></td>
+				  <td>
+				  	<a th:href="@{ /home/info/{id} ( id=${ itemStat.index } ) }" th:text="${ item.descripcion }" class="text-reset text-decoration-none"></a>
+				  </td>
+			      <td th:text="${ item.salario }"></td>
+			      <td th:text="${ item.fecha }"></td>
+			    </tr>
+			  </tbody>
+			</table>
+    		<a th:href="@{ /home }" class="btn btn-block btn-outline-info">Home</a>    	
+    	</div>
+    	
+    </body>
+</html>
